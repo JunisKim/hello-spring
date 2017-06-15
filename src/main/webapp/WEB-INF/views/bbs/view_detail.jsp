@@ -15,6 +15,6 @@
           crossorigin="anonymous">
 </head>
 <body>
-<h1>${article_id}번 글이 조회되었습니다.</h1>
+<h1>${articleId}번 글이 조회되었습니다.</h1>
 </body>
 </html>

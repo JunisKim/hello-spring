@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <title>Title</title>
@@ -15,6 +16,15 @@
           crossorigin="anonymous">
 </head>
 <body>
-<h3>친구 등록 초기화면 입니다.</h3>
+<h3>전체 보기 페이지 입니다.</h3>
+
+<c:forEach var="amigo" items="${list}">
+    <ul>
+        <li><a href="/amigo/${amigo.amigoName}">${amigo.amigoName}</a></li>
+        <li>${amigo.amigoNumber}</li>
+        <li>${amigo.amigoEmail}</li>
+    </ul>
+</c:forEach>
+
 </body>
 </html>
