@@ -8,13 +8,11 @@ public class MainController {
 
     @RequestMapping("/")
     public String index() {
-        return "index";
+        return "redirect:bbs/";
     }
 
-    @RequestMapping("/test")
+    @RequestMapping("/bs-sample")
     public String test() {
-        return "test";
+        return "bs_sample";
     }
-
-
 }

@@ -9,12 +9,16 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
 </head>
 <body>
-<h1>${articleId}번 글이 조회되었습니다.</h1>
+<h1>${article.articleId}번 글이 조회되었습니다.</h1>
+<ul>
+    <li>${article.articleId}</li>
+    <li>${article.title}</li>
+    <li>${article.name}</li>
+    <li>${article.content}</li>
+</ul>
+<a href="/bbs">전체보기</a>
+<a href="/bbs/write">글쓰기</a>
 </body>
 </html>

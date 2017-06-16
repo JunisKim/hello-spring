@@ -1,8 +1,6 @@
 package kr.re.kitri.hello.common;
 
 import kr.re.kitri.hello.model.Amigo;
-import kr.re.kitri.hello.model.Article;
-
 import java.util.ArrayList;
 import java.util.List;
 

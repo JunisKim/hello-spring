@@ -1,0 +1,63 @@
+package kr.re.kitri.hello.dao;
+import kr.re.kitri.hello.model.Article;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+@Repository
+public class ArticleDaoSpringJdbc implements ArticleDao {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @Override
+    public void insertArticle(Article article) {
+
+        String query ="insert into article (article_id, title, name, content)\n" +
+                "VALUES (?, ?, ?, ?);";
+
+        jdbcTemplate.update(
+        query,
+        Integer.parseInt(article.getArticleId()),
+        article.getTitle(),
+        article.getName(),
+        article.getContent());
+    }
+
+    @Override
+    public Article selectArticleById(String articleId) {
+        String query = "select article_id, title, name, content from article where article_id='?'";
+
+        return jdbcTemplate.queryForObject(query,
+                (rs, i) -> {
+                    Article article = new Article();
+                    article.setArticleId(rs.getString(1));
+                    article.setTitle(rs.getString(2));
+                    article.setName(rs.getString(3));
+                    article.setContent(rs.getString(4));
+                    return article;
+                }, articleId);
+    }
+
+    @Override
+    public List<Article> selectAllArticles() {
+    String query =
+    "select article_id, title, name, content from article";
+    return jdbcTemplate.query(query, new RowMapper<Article>() {
+        @Override
+        public Article mapRow(ResultSet rs, int i) throws SQLException {
+            Article article = new Article();
+            article.setArticleId(rs.getString(1));
+            article.setTitle(rs.getString(1));
+            article.setName(rs.getString(1));
+            article.setContent(rs.getString(1));
+            return null;
+        }
+    });
+    }
+}
+

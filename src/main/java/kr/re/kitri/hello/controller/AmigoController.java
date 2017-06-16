@@ -1,24 +1,22 @@
 package kr.re.kitri.hello.controller;
-
 import kr.re.kitri.hello.common.MockAmigo;
-import kr.re.kitri.hello.common.MockArticle;
 import kr.re.kitri.hello.model.Amigo;
-import kr.re.kitri.hello.model.Article;
 import kr.re.kitri.hello.service.AmigoService;
-import kr.re.kitri.hello.service.BbsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.List;
 
 /**
  * Created by danawacomputer on 2017-06-12.
- * /bbs .. 전체보기
- * /bbs/<articleId> .. 상세보기
- * /bbs/<articleId>/modify .. 수정
- * /bbs/<articleId>/remove .. 삭제
+ * /amigo .. 전체보기
+ * /amigo/regis (GET) .. 친구 등록화면으로 이동
+ * /amigo/regis (POST) .. 친구 등록
+ * /amigo/<amigo_id> .. 상세보기
+ * /amigo/<amigo_id>/modify (GET).. 수정
+ * /amigo/<amigo_id>/modify (POST).. 수정
+ * /amigo/<amigo_id>/remove (GET).. 삭제
  *
  * /bbs/write .. 글 작성 화면 로딩
  * /bbs/write/do .. 글 작성하기
@@ -33,9 +31,7 @@ public class AmigoController {
 
     /**
      * \
-     * 전체보기
-     *
-     * @return
+     * 친구등록화면이동
      */
     @RequestMapping("")
     public ModelAndView viewAll() {

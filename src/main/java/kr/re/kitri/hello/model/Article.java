@@ -9,6 +9,17 @@ public class Article {
     private String name;
     private String content;
 
+
+
+    public Article(String articleId, String title, String name, String content) {
+        this.articleId = articleId;
+        this.title = title;
+        this.name = name;
+        this.content = content;
+    }
+
+    public Article(){}
+
     public String getArticleId() {
         return articleId;
     }

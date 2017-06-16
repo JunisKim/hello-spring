@@ -1,6 +1,7 @@
 package kr.re.kitri.hello.service;
 
 import kr.re.kitri.hello.dao.ArticleDao;
+import kr.re.kitri.hello.dao.ArticleDaoJdbc;
 import kr.re.kitri.hello.model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,33 +17,29 @@ public class BbsService {
 
     @Autowired
     private ArticleDao dao;
-    /**
-     *글쓰기
-     * @param
-     */
 
-    public void registArticle(Article article){
+    /**
+     * 글쓰기
+     * @param article
+     */
+    public void registArticle(Article article) {
 
         dao.insertArticle(article);
     }
 
     /**
-     * 글 전체 보기
-     * @return 전체 글
+     * 상세 글보기
+     * @param articleId 글번호
+     * @return 글
      */
-    public List<Article> viewArticles(){
-
-        return null;
+    public Article viewArticle(String articleId) {
+        return dao.selectArticleById(articleId);
     }
 
     /**
-     * 글 상세 보기
-     * @return 글
+     * 전체 글보기
      */
-    public Article viewArticle(String articleId){
-
-        return null;
+    public List<Article> getArticles() {
+        return dao.selectAllArticles();
     }
-
-
 }
