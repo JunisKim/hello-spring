@@ -1,7 +1,9 @@
 package kr.re.kitri.hello.dao;
+
 import kr.re.kitri.hello.model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ArticleDaoJdbc implements ArticleDao{
+public class ArticleDaoJdbc implements ArticleDao {
 
     @Autowired
     private DataSource dataSource;
@@ -20,6 +22,7 @@ public class ArticleDaoJdbc implements ArticleDao{
      * 글 입력
      * @param article
      */
+    @Override
     public void insertArticle(Article article) {
 
         try {
@@ -49,6 +52,7 @@ public class ArticleDaoJdbc implements ArticleDao{
      * 글 전체보기
      * @return 전체 글 리스트
      */
+    @Override
     public List<Article> selectAllArticles() {
 
         String query =
@@ -71,10 +75,12 @@ public class ArticleDaoJdbc implements ArticleDao{
 
                 list.add(article);
             }
+            System.out.println(list);
             conn.close();
             return list;
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("fail to trans");
             return new ArrayList<>();
         }
     }
@@ -83,6 +89,7 @@ public class ArticleDaoJdbc implements ArticleDao{
      * 글 상세보기
      * @param articleId 글번호
      */
+    @Override
     public Article selectArticleById(String articleId) {
         String query =
                 "SELECT article_id, title, name, content\n" +
@@ -110,3 +117,4 @@ public class ArticleDaoJdbc implements ArticleDao{
         }
     }
 }
+
